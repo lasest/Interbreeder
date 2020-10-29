@@ -1,4 +1,7 @@
+#!/usr/bin/python3
+
 from typing import List, Tuple
+import sys
 
 def get_genes(genotype: str) -> List[str]:
     """Returns a list of genes, present in a given genotype by splitting it at every second character"""
@@ -115,4 +118,8 @@ def breed(genotype_1: str, genotype_2: str):
     unique_genotypes = get_unique_genotypes(children_genotypes)
     print_unique_genotypes(unique_genotypes)
 
-breed("Aa", "Aa")
+if sys.argv[1] in {"-h", "--help"}:
+    print("USAGE: interbreeder.py <Genome1> <Genome2>")
+else:
+    genotypes = sys.argv[1], sys.argv[2]
+    breed(*genotypes)
